@@ -18,8 +18,6 @@
 # Функція повертає новий список, який містить отримані результати.
 
 
-
-
 def task_one(num_list):
     print("Завдання 1")
     num_summ = sum(num_list)
@@ -42,23 +40,29 @@ def task_three(num_list):
             if num % i == 0:
                 dev_count += 1
             i += 1
-        if dev_count <= 1:
+        if dev_count <= 1 and num != 0:
             all_simple += 1
     print(f"Количество простых чисел {all_simple}")
-
 
 
 def task_four(num_list):
     print("Завдання 4")
     set_number = int(input("Pls input number your want to delete: "))
     del_counts = 0
-    index = 0
+    int_to_del = []
     for num in num_list:
+        index = 0
         if num == set_number:
             del_counts += 1
-            del num_list[index]
+            int_to_del.append(num)
         index += 1
+    for x in int_to_del:
+        while x in num_list:
+            num_list.remove(x)
+
     print(f"This function deleted {set_number} in your list {del_counts} times")
+    print(f"Now your list looks like: {num_list}")
+
 
 def task_five(num_list1, num_list2):
     print("Завдання 5")
@@ -81,14 +85,14 @@ try:
     print("Pls input 2 lists of integer using space.")
 
     numbers_1 = list(map(int, input("List 1: ").split()))
-    # numbers_2 = list(map(int, input("List 2: ").split()))
+    numbers_2 = list(map(int, input("List 2: ").split()))
 
-    # task_one(numbers_1)
-    # task_two(numbers_1)
-    # task_three(numbers_1)
+    task_one(numbers_1)
+    task_two(numbers_1)
+    task_three(numbers_1)
     task_four(numbers_1)
-    # task_five(numbers_1, numbers_2)
-    # task_six(numbers_1)
+    task_five(numbers_1, numbers_2)
+    task_six(numbers_1)
 
 except ValueError as e:
     print("Pls input integer")
